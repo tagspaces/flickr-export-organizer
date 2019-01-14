@@ -10,7 +10,6 @@
     "exportDir": "./flickrExport"
   },
   "dependencies": {
-    "fs": "^0.0.1-security",
     "uuid": "^3.3.2"
   },
   "devDependencies": {}
