@@ -9,8 +9,6 @@
     "imgDir": "./flickrData",
     "exportDir": "./flickrExport"
   },
-  "dependencies": {
-    "uuid": "^3.3.2"
-  },
+  "dependencies": {},
   "devDependencies": {}
 }

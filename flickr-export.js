@@ -1,5 +1,7 @@
+#!/usr/bin/env node
+
 var fs = require('fs');
-var uuidv1 = require('uuid');
+// var uuidv1 = require('uuid');
 var path = require('path');
 
 var jsonDir = process.env.npm_package_config_jsonDir || './flickrData';
@@ -177,4 +179,8 @@ function checkInAlbums(flickrId) {
         }
     }
     return undefined;
+}
+
+function uuidv1() {
+    return Math.random().toString(36).substring(2) + (new Date()).getTime().toString(36);
 }
