@@ -1,0 +1,17 @@
+{
+  "name": "flickr-export",
+  "version": "1.0.0",
+  "scripts": {
+    "flickr-export": "node flickr-export.js"
+  },
+  "config": {
+    "jsonDir": "./flickrData",
+    "imgDir": "./flickrData",
+    "exportDir": "./flickrExport"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {}
+}
