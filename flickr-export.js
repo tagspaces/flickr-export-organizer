@@ -116,7 +116,13 @@ fs.readdir(imgDir, function (err, filenames) {
                         var tsObj = {};
                         tsObj.appName = process.env.npm_package_name;
                         tsObj.appVersionUpdated = process.env.npm_package_version;
-                        tsObj.description = flickrData.description;
+                        var description = flickrData.description;
+                        if (flickrData.comments) {
+                            flickrData.comments.forEach(function (comment) {
+                                description += "\n " + comment.user + ': ' + comment.comment;
+                            });
+                        }
+                        tsObj.description = description;
                         tsObj.lastUpdated = new Date().toJSON();
                         tsObj.tags = tags;
 
@@ -161,7 +167,7 @@ function getFlickrId(file) {
 
 function checkInAlbums(flickrId) {
     if (albums && albums.albums) {
-        for (var i = albums.albums.length - 1; i >= 0; --i){
+        for (var i = albums.albums.length - 1; i >= 0; --i) {
             var album = albums.albums[i];
             if (album.photos) {
                 if (album.photos.indexOf(flickrId) !== -1) {
