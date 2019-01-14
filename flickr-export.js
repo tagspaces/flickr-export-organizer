@@ -11,14 +11,10 @@ console.log('You export directory:' + exportDir);
 
 var albums;
 // open and parse albums
-fs.readFile(path.format({dir: jsonDir, base: 'albums.json'}), 'utf8', function read(err, data) {
-    if (err) {
-        console.dir(err);
-    } else {
-        // console.log(data);
-        albums = JSON.parse(data);
-    }
-});
+var data = fs.readFileSync(path.format({dir: jsonDir, base: 'albums.json'}), 'utf8');
+if (data) {
+    albums = JSON.parse(data);
+}
 
 fs.readdir(imgDir, function (err, filenames) {
     if (err) {
@@ -29,14 +25,11 @@ fs.readdir(imgDir, function (err, filenames) {
             // exclude json files
             if (fileExt !== '.json') {
                 console.log(file);
-                var flickrData = parseFlickrData(file);
-                console.dir(flickrData);
-
-                // if(albums) todo check in albums
+                var flickrId = getFlickrId(file);
 
                 var jsonFile = path.format({
                     dir: jsonDir,
-                    base: 'photo_' + flickrData.id + '.json'
+                    base: 'photo_' + flickrId + '.json'
                 });
                 // open and parse JSON file for the the current photo
                 fs.readFile(jsonFile, 'utf8', function read(err, data) {
@@ -50,11 +43,20 @@ fs.readdir(imgDir, function (err, filenames) {
                             fs.mkdirSync(exportDir);
                         }
 
-                        var dateTaken = new Date(flickrData.date_taken);
-                        var exportPath = path.format({
-                            dir: exportDir,
-                            base: dateTaken.getFullYear() + ('0' + (dateTaken.getMonth() + 1)).slice(-2) + ('0' + dateTaken.getDate()).slice(-2)
-                        });
+                        var album = checkInAlbums(flickrId);
+                        var exportPath;
+                        if (album && album.title) { // create dir based on Flickr Album
+                            exportPath = path.format({
+                                dir: exportDir,
+                                base: album.title
+                            });
+                        } else { // create dir based on Photo date_created
+                            var dateTaken = new Date(flickrData.date_taken);
+                            exportPath = path.format({
+                                dir: exportDir,
+                                base: dateTaken.getFullYear() + ('0' + (dateTaken.getMonth() + 1)).slice(-2) + ('0' + dateTaken.getDate()).slice(-2)
+                            });
+                        }
 
                         if (!fs.existsSync(exportPath)) {
                             fs.mkdirSync(exportPath);
@@ -136,22 +138,37 @@ fs.readdir(imgDir, function (err, filenames) {
     }
 });
 
-function parseFlickrData(file) {
-    var flickrData = {};
+function getFlickrId(file) {
+    // var flickrData = {};
     if (file) {
         var filename = path.parse(file).name; //file.substring(0, file.lastIndexOf('.')) || file;
         var data = filename.split('_');
         for (var i = data.length - 1; i >= 0; --i) {
             if (data[i] === 'o') {
-                flickrData.original = '';
+                // flickrData.original = '';
             }
             else if (/^\d+$/.test(data[i])) {
                 // if(!flickrData.id) {
-                flickrData.id = data[i];
-                break;
+                // flickrData.id = data[i];
+                return data[i];
+                // break;
                 // }
             }
         }
     }
-    return flickrData;
+    return undefined;
+}
+
+function checkInAlbums(flickrId) {
+    if (albums && albums.albums) {
+        for (var i = albums.albums.length - 1; i >= 0; --i){
+            var album = albums.albums[i];
+            if (album.photos) {
+                if (album.photos.indexOf(flickrId) !== -1) {
+                    return album;
+                }
+            }
+        }
+    }
+    return undefined;
 }
