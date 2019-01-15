@@ -28,7 +28,7 @@ Extract (unzip) Flickr data and copy all data Photos and JSON files (albums.json
 
 Download flickr-export.js and place it next to the flickrData folder.
 
-Download and install Node.js https://nodejs.org/en/download/ 
+Download and install Node.js https://nodejs.org/en/#download
 
 Right click on flickr-export.js and choose Open With... (/Program Files/node.exe)
 
