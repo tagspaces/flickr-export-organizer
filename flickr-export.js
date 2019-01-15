@@ -66,7 +66,7 @@ if (filenames) {
                         dir: imgDir,
                         base: file
                     });
-                    var newFileName = flickrData.name.endsWith(fileExt) ? flickrData.name : flickrData.name + fileExt;
+                    var newFileName = cleanFileName(file, ['_' + flickrId + '_o', '_' + flickrId]); // flickrData.name.endsWith(fileExt) ? flickrData.name : flickrData.name + fileExt; // flickrData.name can be different !!
                     var newFile = path.format({
                         dir: exportPath,
                         base: newFileName
@@ -172,6 +172,13 @@ function checkInAlbums(flickrId) {
         }
     }
     return undefined;
+}
+
+function cleanFileName(filename, arrToRemove) {
+    arrToRemove.forEach(function (toRemove) {
+        filename = filename.replace(toRemove, '');
+    });
+    return filename;
 }
 
 function uuidv1() {
