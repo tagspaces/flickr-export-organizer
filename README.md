@@ -20,7 +20,17 @@ The script will go through all *dddddddd_o.* files doing the following:
   - extracted comment in the description user -> comment \n
   - extracted tags
   - extracted geo tag if geo info available
- 
+  
+  
+## Installation
+
+Extract (unzip) Flickr data and copy all data Photos and JSON files (albums.json) in flickrData folder.
+
+Download flickr-export.js and place it next to the flickrData folder.
+
+Download and install Node.js https://nodejs.org/en/download/ 
+
+Right click on flickr-export.js and choose Open With... (/Program Files/node.exe)
  
 
 

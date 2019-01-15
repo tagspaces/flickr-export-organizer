@@ -5,9 +5,9 @@
     "flickr-export": "node flickr-export.js"
   },
   "config": {
-    "jsonDir": "./flickrData",
-    "imgDir": "./flickrData",
-    "exportDir": "./flickrExport"
+    "jsonDir": "flickrData",
+    "imgDir": "flickrData",
+    "exportDir": "flickrExport"
   },
   "dependencies": {},
   "devDependencies": {}
