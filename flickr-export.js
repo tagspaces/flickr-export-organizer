@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 var fs = require('fs');
-// var uuidv1 = require('uuid');
 var path = require('path');
 
 var jsonDir = process.env.npm_package_config_jsonDir || 'flickrData';
@@ -92,7 +91,7 @@ if (filenames) {
                     //export Geo tag
                     if (flickrData.geo && flickrData.geo.latitude && flickrData.geo.longitude) {
                         var tag = {};
-                        tag.id = uuidv1();
+                        tag.id = generateID();
                         tag.type = 'sidecar';
                         tag.title = (flickrData.geo.latitude / 1000000) +
                             (flickrData.geo.longitude > 0 ? '+' : '') +
@@ -105,7 +104,7 @@ if (filenames) {
                         flickrData.tags.forEach(function (flickrTag) {
                             if (flickrTag) {
                                 var tag = {};
-                                tag.id = uuidv1();
+                                tag.id = generateID();
                                 tag.type = 'sidecar';
                                 tag.title = flickrTag.tag;
                                 tags.push(tag);
@@ -191,6 +190,6 @@ function cleanFileName(filename, arrToRemove) {
     return filename;
 }
 
-function uuidv1() {
+function generateID() {
     return Math.random().toString(36).substring(2) + (new Date()).getTime().toString(36);
 }
