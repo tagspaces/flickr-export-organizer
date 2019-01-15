@@ -10,6 +10,7 @@ var exportDir = process.env.npm_package_config_exportDir || 'flickrExport';
 console.log('You json directory of Flickr export:' + jsonDir);
 console.log('You data (Photos + Video) directory of Flickr export:' + imgDir);
 console.log('You export directory:' + exportDir);
+console.log('Exporting please wait...');
 
 var albums;
 // open and parse albums
@@ -24,7 +25,7 @@ if (filenames) {
         var fileExt = path.parse(file).ext;
         // exclude json files
         if (fileExt !== '.json' && fileExt !== '.zip') {
-            console.log(file);
+            // console.log(file);
             var flickrId = getFlickrId(file);
 
             var jsonFile = path.format({
@@ -71,7 +72,11 @@ if (filenames) {
                         dir: exportPath,
                         base: newFileName
                     });
-                    fs.copyFileSync(oldFile, newFile);
+                    try {
+                        fs.copyFileSync(oldFile, newFile);
+                    } catch (e) {
+                        console.error('copy photo error:', e);
+                    }
 
                     // create .ts folder
                     var tsFolder = path.format({
@@ -127,12 +132,17 @@ if (filenames) {
                         base: newFileName + '.json'
                     });
 
-                    fs.writeFile(tsJson, JSON.stringify(tsObj), function (err) {
+                    try {
+                        fs.writeFileSync(tsJson, JSON.stringify(tsObj), 'utf8');
+                    } catch (e) {
+                        console.error('write json file:', e);
+                    }
+                    /* fs.writeFile(tsJson, JSON.stringify(tsObj), function (err) { // file will be written at the end of the script (possible data inconsistency)
                         if (err) {
                             return console.log(err);
                         }
-                        // console.log("The file was saved!");
-                    });
+                        console.log('The file ' + newFileName + ' was saved!');
+                    }); */
                 }
             });
         }

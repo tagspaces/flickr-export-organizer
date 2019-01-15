@@ -31,6 +31,11 @@ Download flickr-export.js and place it next to the flickrData folder.
 Download and install Node.js https://nodejs.org/en/download/ 
 
 Right click on flickr-export.js and choose Open With... (/Program Files/node.exe)
+
+Alternatively run in console: Windows cmd or Linux terminal
+```
+node flickr-export.js
+```
  
 
 
