@@ -2,7 +2,7 @@
 This script will organize the files exported from the Flickr service in folders, trying to extract tags and other meta data.
 
 ## Motivation
-According to the recent announcement from Flickr, the free users will lose most of their photos in they don't want to update to a paid plan. Thankfully Flickr is providing a way to export all of your photos and videos together with some meta data including useful things such as tags and albums. So we decided to write a small script which   purpose is sorting the files by folders and extracting that meta data in a format, which can be later recognized by our open source file management software [TagSpaces](https://github.com/tagspaces/tagspaces). The script iterates thought all the media files in the export folder and copies the found files in folders. If file is part of album, a folder with the album's name is create and the file is copied there. If this is not the case the script create a folder, which name corresponds to the date when the image was taken, and copies it there.
+According to the recent [announcement](https://blog.flickr.net/en/2018/11/01/changing-flickr-free-accounts-1000-photos/) from Flickr, the users with the free account will lose most of their photos if they don't update to a paid plan. Thankfully Flickr is providing a way to export all of your photos and videos together with some meta data including useful things such as tags and albums. So we decided to write a small script which   purpose is sorting the files by folders and extracting that meta data in a format, which can be later recognized by our open source file management software [TagSpaces](https://github.com/tagspaces/tagspaces). The script iterates thought all the media files in the export folder and copies the found files in folders. If file is part of album, a folder with the album's name is create and the file is copied there. If this is not the case the script create a folder, which name corresponds to the date when the image was taken, and copies it there.
 
 ## Prerequirements
 - Node.js - you will need a running Node.js environment, which can be easily achieved on Windows, macOS or Linux by just installing Node.js from https://nodejs.org/en/#download
@@ -13,7 +13,7 @@ According to the recent announcement from Flickr, the free users will lose most 
   * Go to "Your Flickr Data" area and request your files by clicking the "Request my Flickr data".
   * After a while the data is prepared and you have to download all the zip-files locally.
 
-![How to export Flickr data](/screenshots/flickr-export.png).
+![How to export Flickr data](/screenshots/flickr-export.png)
 
 
 ## Installation and running
@@ -24,7 +24,7 @@ According to the recent announcement from Flickr, the free users will lose most 
 
 - Extract all files from all the zip exports in a  sub folder called `flickerData`.
 
-- Under Windows you can right click on flickr-export.js and choose Open With... (path_to_nodejs\node.exe)
+- Under Windows you can right click on `export-organizer.js` and choose Open With... (path_to_nodejs\node.exe)
 
 - Alternatively you can run the script in a Windows, Linux or macOS terminal like this:
 
