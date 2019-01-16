@@ -1,6 +1,6 @@
 {
   "name": "flickr-export",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "flickr-export": "node flickr-export.js"
   },
