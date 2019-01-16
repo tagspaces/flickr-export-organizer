@@ -1,6 +1,8 @@
 # Dependency directory
 node_modules
 
+yarn.lock
+
 # IDE speciffic
 .idea
 *.iml
