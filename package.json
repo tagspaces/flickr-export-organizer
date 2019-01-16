@@ -2,7 +2,7 @@
   "name": "flickr-export",
   "version": "1.0.1",
   "scripts": {
-    "flickr-export": "node flickr-export.js"
+    "flickr-export": "node export-organizer.js"
   },
   "config": {
     "jsonDir": "flickrData",
