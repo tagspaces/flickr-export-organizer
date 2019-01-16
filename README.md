@@ -5,7 +5,7 @@ This script will organize the files exported from the Flickr service in folders,
 According to the recent announcement from Flickr, the free users will lose most of their photos in they don't want to update to a paid plan. Thankfully Flickr is providing a way to export all of your photos and videos together with some meta data including useful things such as tags and albums. So we decided to write a small script which   purpose is sorting the files by folders and extracting that meta data in a format, which can be later recognized by our open source file management software [TagSpaces](https://github.com/tagspaces/tagspaces). The script iterates thought all the media files in the export folder and copies the found files in folders. If file is part of album, a folder with the album's name is create and the file is copied there. If this is not the case the script create a folder, which name corresponds to the date when the image was taken, and copies it there.
 
 ## Prerequirements
-- Node.js - you will need a running Node.js environment, which can be easily achieved on Windows, macOS or Linux by just installing Node.js from https://nodejs.org/en/download/
+- Node.js - you will need a running Node.js environment, which can be easily achieved on Windows, macOS or Linux by just installing Node.js from https://nodejs.org/en/#download
 
 - Your Flickr Data - You have to request and download your Flickr data, as shown in following screenshot.
   * Login to Flickr via the web
@@ -22,7 +22,7 @@ According to the recent announcement from Flickr, the free users will lose most 
 
 - Download the last version of the script directly from [here](https://raw.githubusercontent.com/tagspaces/flickr-export-organizer/master/export-organizer.js) or from the [release section](https://github.com/tagspaces/flickr-export-organizer/releases) of this project.
 
-- Extract all files from all zip exports in a  sub folder called `flickerData`.
+- Extract all files from all the zip exports in a  sub folder called `flickerData`.
 
 - Under Windows you can right click on flickr-export.js and choose Open With... (path_to_nodejs\node.exe)
 
