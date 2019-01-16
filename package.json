@@ -1,5 +1,5 @@
 {
-  "name": "flickr-export",
+  "name": "flickr-export-organizer",
   "version": "1.0.1",
   "scripts": {
     "flickr-export": "node export-organizer.js"
