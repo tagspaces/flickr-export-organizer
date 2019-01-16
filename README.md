@@ -2,7 +2,7 @@
 This script will organize the files exported from the Flickr service in folders, trying to extract tags and other meta data.
 
 ## Motivation
-According to the recent [announcement](https://blog.flickr.net/en/2018/11/01/changing-flickr-free-accounts-1000-photos/) from Flickr, the users with the free account will lose most of their photos if they don't update to a paid plan. Thankfully Flickr is providing a way to export all of your photos and videos together with some meta data including useful things such as tags and albums. So we decided to write a small script which   purpose is sorting the files by folders and extracting that meta data in a format, which can be later recognized by our open source file management software [TagSpaces](https://github.com/tagspaces/tagspaces). The script iterates thought all the media files in the export folder and copies the found files in folders. If file is part of album, a folder with the album's name is create and the file is copied there. If this is not the case the script create a folder, which name corresponds to the date when the image was taken, and copies it there.
+According to a recent [announcement](https://blog.flickr.net/en/2018/11/01/changing-flickr-free-accounts-1000-photos/) from Flickr, the users with the free account will lose most of their photos if they don't update to a paid plan. Thankfully Flickr is providing a way to export all of your photos and videos together with some meta data including useful things such as tags and albums. So we decided to write a small script which purpose is sorting the files by folders and extracting that meta data in a format, which can be later recognized by our open source file management software [TagSpaces](https://github.com/tagspaces/tagspaces). The script iterates through all the media files in the export folder and copies the found files in folders. If file is part of album, a folder with the album's name is create and the file is copied there. If this is not the case the script create a folder, which name corresponds to the date when the image was taken, and copies it there.
 
 ## Prerequirements
 - Node.js - you will need a running Node.js environment, which can be easily achieved on Windows, macOS or Linux by just installing Node.js from https://nodejs.org/en/#download
@@ -76,7 +76,7 @@ After running the script, you will have the following folder structure:
 
 ## Managing your files with TagSpaces
 
-After the the files are organized. You can create a new location in TagSpaces pointing to the `flickrExport` folder and open it. Now you will be able to navigate your photos in TagSpaces by albums and see the tags you gave to your media files.
+After the files are organized, you can create a new location in TagSpaces pointing to the `flickrExport` folder and open it. Now you will be able to navigate your photos in TagSpaces by albums and see the tags you gave to your media files.
 
 ![TagSpaces showing exported files from Flickr with metadata](screenshots/tagspaces-exported-data.png)
 
