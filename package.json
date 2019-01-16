@@ -1,6 +1,10 @@
 {
   "name": "flickr-export-organizer",
   "version": "1.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tagspaces/flickr-export-organizer/"
+  },
   "scripts": {
     "flickr-export": "node export-organizer.js"
   },
