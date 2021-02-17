@@ -59,7 +59,7 @@ if (filenames) {
                     }
 
                     if (!fs.existsSync(exportPath)) {
-                        fs.mkdirSync(exportPath);
+                        fs.mkdirSync(exportPath, { recursive: true });
                     }
 
                     var oldFile = path.format({
